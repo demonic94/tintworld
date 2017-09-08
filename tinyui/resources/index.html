@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<title>tinyui</title>
+<!-- 1.) Load SAPUI5 (from a remote server), select theme and control library -->
+<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.commons"
+	data-sap-ui-theme="sap_bluecrystal">
+		</script>
+<script src="./Util.js">
+</script>
+<script>
+	var oModel = new sap.ui.model.odata.ODataModel("/euro.xsodata", true);
+	
+	var oColumnListItem = new sap.m.ColumnListItem({
+			cells: [ 
+			        new sap.m.Text({text: "{name}"})
+			]
+	});
+	
+	var oTable = new sap.m.Table("tinytab", {
+			noDataText: "No Countries in your World",
+			columns: [
+			          new sap.m.Column({
+			        	  header: new sap.m.Label({text: "name"})
+			 })],
+			 headerToolbar: new sap.m.Toolbar("tableHead",{
+			 	content: [new sap.m.Button("addButton", {text: "Add Country", press:openFirstDialog})]
+			 })
+	});
+
+  oTable.setModel(oModel); 
+  oTable.bindItems("/euro", oColumnListItem);
+  oTable.placeAt("uiArea");
+	</script>
+</head>
+<body class="sapUiBody">
+	<!-- This is where you place the UI5 button -->
+	<div id="uiArea"></div>
+</body>
+</html>

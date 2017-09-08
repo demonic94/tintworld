@@ -1,2 +1,3 @@
-# tinyworld
-Hana XSA learning project
+# tinyWorld
+XSA learning
+project to learn HANA XSA features 
