@@ -12,4 +12,5 @@ context tinyf {
         name   : String(100);
         partof : association[0..1] to world { continent };
     };
-};
+
+    };
